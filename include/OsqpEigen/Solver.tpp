@@ -467,7 +467,7 @@ bool OsqpEigen::Solver::evaluateNewValues(const std::vector<Eigen::Triplet<T>>& 
     size_t valuesAdded = 0;
     if (newMatrixTriplet.size() == oldMatrixTriplet.size())
     {
-        for (int i = 0; i < newMatrixTriplet.size(); i++)
+        for (size_t i = 0; i < newMatrixTriplet.size(); i++)
         {
             // check if the sparsity pattern is changed
             if ((newMatrixTriplet[i].row() != oldMatrixTriplet[i].row())
@@ -504,11 +504,11 @@ void OsqpEigen::Solver::selectUpperTriangularTriplets(
 {
 
     int upperTriangularTriplets = 0;
-    for (int i = 0; i < fullMatrixTriplets.size(); ++i)
+    for (size_t i = 0; i < fullMatrixTriplets.size(); ++i)
     {
         if (fullMatrixTriplets[i].row() <= fullMatrixTriplets[i].col())
         {
-            if (upperTriangularTriplets < upperTriangularMatrixTriplets.size())
+            if ((size_t) upperTriangularTriplets < upperTriangularMatrixTriplets.size())
             {
                 upperTriangularMatrixTriplets[upperTriangularTriplets] = fullMatrixTriplets[i];
             } else
